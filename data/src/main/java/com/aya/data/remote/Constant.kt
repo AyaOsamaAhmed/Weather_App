@@ -1,4 +1,4 @@
-package com.aya.data
+package com.aya.data.remote
 
 class Constant {
 

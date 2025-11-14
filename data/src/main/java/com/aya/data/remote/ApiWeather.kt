@@ -1,7 +1,7 @@
 package com.aya.data.remote
 
-import com.aya.data.Constant.Companion.API_KEY
-import com.aya.data.entity.WeatherResponse
+import com.aya.data.remote.Constant.Companion.API_KEY
+import com.aya.data.remote.response.WeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

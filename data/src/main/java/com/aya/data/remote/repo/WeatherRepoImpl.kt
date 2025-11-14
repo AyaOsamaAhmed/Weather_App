@@ -1,8 +1,8 @@
-package com.aya.data.repo
+package com.aya.data.remote.repo
 
-import com.aya.data.Constant.Companion.API_KEY
-import com.aya.data.Constant.Companion.BASE_URL
-import com.aya.data.entity.WeatherResponse
+import com.aya.data.remote.Constant.Companion.API_KEY
+import com.aya.data.remote.Constant.Companion.BASE_URL
+import com.aya.data.remote.response.WeatherResponse
 import com.aya.data.remote.ApiWeather
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

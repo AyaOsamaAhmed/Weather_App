@@ -1,4 +1,5 @@
-package com.aya.data.entity
+package com.aya.data.remote.response
+
 
 data class WeatherResponse (
 

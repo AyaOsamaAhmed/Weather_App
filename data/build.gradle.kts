@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.id.hilt)
+    alias(libs.plugins.kapt)
+
 }
 
 android {
@@ -38,6 +41,9 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
+    //hilt
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.android.compiler)
 
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
@@ -54,6 +60,12 @@ dependencies {
     implementation(libs.ktor.client.cio)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.gson)
+
+    // Room Database
+    implementation(libs.androidx.room)
+    implementation(libs.androidx.room.ktx)
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
