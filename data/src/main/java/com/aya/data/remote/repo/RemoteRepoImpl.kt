@@ -8,8 +8,8 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 
-class WeatherRepoImpl( private val apiWeather: ApiWeather ,
-    private val ktor: HttpClient) : WeatherRepo {
+class RemoteRepoImpl(private val apiWeather: ApiWeather,
+                     private val ktor: HttpClient) : RemoteRepo {
     override suspend fun getWeatherByNameFromRemote(cityName: String) : WeatherResponse {
         return apiWeather.getWeatherByName(cityName)
 

@@ -2,7 +2,7 @@ package com.aya.data.remote.repo
 
 import com.aya.data.remote.response.WeatherResponse
 
-interface WeatherRepo {
+interface RemoteRepo {
 
     suspend fun getWeatherByNameFromRemote(cityName : String) : WeatherResponse
 
