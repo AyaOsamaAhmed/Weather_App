@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.id.hilt)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -36,6 +38,9 @@ android {
     }
     buildFeatures {
         compose = true
+
+        viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -50,6 +55,26 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+
+    //hilt
+    implementation (libs.hilt.android)
+    implementation(libs.material)
+    kapt (libs.hilt.android.compiler)
+
+    
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.recyclerview)
+
+    /*  scalable size unit which can help Android with supporting multiple screens. */
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
+    // Glide
+    implementation(libs.glide)
+
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
