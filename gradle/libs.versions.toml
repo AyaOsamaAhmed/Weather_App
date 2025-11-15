@@ -81,3 +81,5 @@ hilt = { id = "com.google.dagger.hilt.android", version = "2.56.2" }
 id-hilt = { id ="dagger.hilt.android.plugin"  }
 kapt = { id = "kotlin-kapt" }
 
+navigation-safe-args = { id = "androidx.navigation.safeargs.kotlin" }
+

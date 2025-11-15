@@ -9,5 +9,15 @@ interface WeatherRepo {
 
     suspend fun insertCityToDB(city: CityModel)
 
+    suspend fun updateCityIdToDB(city: CityModel)
+
     suspend fun checkCityToDB(city: String) :Boolean
+
+    //
+    suspend fun getDetailsCityFromApi(city: String): CityModel
+
+    suspend fun insertDetailsCityToDB(city: CityModel)
+
+    //
+    suspend fun getHistoricalWeatherDB(name :String): Flow<List<CityModel>>
 }

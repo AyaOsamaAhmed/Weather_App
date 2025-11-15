@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.id.hilt)
     alias(libs.plugins.kapt)
+    alias(libs.plugins.navigation.safe.args)
+
 }
 
 android {

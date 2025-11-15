@@ -14,6 +14,14 @@
       android:id="@+id/action_cityFragment_to_addCityBottomSheet"
       app:destination="@id/addCityBottomSheet" />
 
+  <action
+      android:id="@+id/action_cityFragment_to_detailsCityFragment"
+      app:destination="@id/detailsCityFragment" />
+
+     <action
+         android:id="@+id/action_cityFragment_to_historicalCityFragment"
+         app:destination="@id/historicalCityFragment" />
+
  </fragment>
 
  <fragment
@@ -26,4 +34,33 @@
          app:destination="@id/cityFragment" />
  </fragment>
 
+ <fragment
+  android:name="com.aya.weather_app.fragment.detailsCity.DetailsCityFragment"
+    android:id="@+id/detailsCityFragment"
+    tools:layout="@layout/fragment_details"
+  >
+    <argument
+        android:name="city"
+        app:argType="string"  />
+
+     <action
+         android:id="@+id/action_detailsCityFragment_to_cityFragment"
+         app:destination="@id/cityFragment" />
+ </fragment>
+
+
+ <fragment
+  android:name="com.aya.weather_app.fragment.historicalCity.HistoricalCityFragment"
+    android:id="@+id/historicalCityFragment"
+    tools:layout="@layout/fragment_historical"
+  >
+  <argument
+      android:name="city"
+      app:argType="string"  />
+
+     <action
+         android:id="@+id/action_historicalCityFragment_to_cityFragment"
+         app:destination="@id/cityFragment" />
+
+ </fragment>
 </navigation>

@@ -34,8 +34,8 @@ class CitiesAdapter(private val cityActionsListener: CityActionsListener) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(city: CityModel) {
-            binding.cityName.text = city.name
-            binding.cityIcon.setOnClickListener { cityActionsListener.onCityClick(city) }
+            binding.cityName.text = "${city.name}, ${city.country}"
+            binding.cityItem.setOnClickListener { cityActionsListener.onCityClick(city) }
             binding.history.setOnClickListener {
                 cityActionsListener.onCityWeatherHistoryClick(
                     city

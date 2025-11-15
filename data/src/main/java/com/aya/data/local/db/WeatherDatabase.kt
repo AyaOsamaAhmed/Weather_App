@@ -11,7 +11,7 @@ import com.aya.data.local.entity.Weather
 
 @Database(
     entities = [CityEntity::class , Weather::class],
-    version = 2,
+    version = 4,
     exportSchema = true
 )
 abstract class WeatherDatabase : RoomDatabase() {

@@ -9,6 +9,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class WeatherDao :BaseDao<Weather> {
-    @Query("SELECT * FROM weather WHERE cityId IN(:cityId)")
-    abstract fun getWeatherHistory(cityId: String): Flow<List<Weather>>
+    @Query("SELECT * FROM weather WHERE name = :name")
+    abstract fun getWeatherHistory(name: String): Flow<List<Weather>>
 }

@@ -1,45 +1,55 @@
-package com.aya.weather_app.fragment.city
+package com.aya.weather_app.fragment.historicalCity
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aya.data.remote.Constant.Companion.ICON_URL
 import com.aya.domain.entity.CityModel
 import com.aya.weather_app.R
 import com.aya.weather_app.base.BaseFragment
-import com.aya.weather_app.databinding.FragmentCityBinding
+import com.aya.weather_app.databinding.FragmentDetailsBinding
+import com.aya.weather_app.databinding.FragmentHistoricalBinding
+import com.aya.weather_app.extension.hide
 import com.aya.weather_app.extension.show
 import com.aya.weather_app.extension.showMessage
 import com.aya.weather_app.fragment.city.adapter.CitiesAdapter
-import com.aya.weather_app.fragment.city.adapter.CityActionsListener
+import com.aya.weather_app.fragment.historicalCity.adapter.HistoricalCityAdapter
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class CityFragment : BaseFragment<FragmentCityBinding, CityViewModel>(), CityActionsListener {
+class HistoricalCityFragment : BaseFragment<FragmentHistoricalBinding, HistoricalCityViewModel>()  {
 
     private lateinit var nav : NavHostFragment
     private lateinit var navController : NavController
-    override val mViewModel: CityViewModel by viewModels()
-    private val citiesAdapter: CitiesAdapter by lazy { CitiesAdapter(this) }
+    override val mViewModel: HistoricalCityViewModel by viewModels()
+
+
+    private val historicalCityAdapter: HistoricalCityAdapter by lazy { HistoricalCityAdapter() }
+    val args: HistoricalCityFragmentArgs by navArgs()
 
     override fun onFragmentReady() {
         handleViewState()
-        setupCitiesRecyclerView()
+        val cityName = args.city
+        mViewModel.loadWeather(cityName)
+        setupHistoricalCityRecyclerView()
 
 
         binding.apply{
-            addCity.setOnClickListener {
-                navController.navigate(R.id.action_cityFragment_to_addCityBottomSheet)
+
+            ivBack.setOnClickListener {
+                navController.navigate(R.id.action_historicalCityFragment_to_cityFragment)
             }
         }
     }
@@ -64,28 +74,23 @@ class CityFragment : BaseFragment<FragmentCityBinding, CityViewModel>(), CityAct
 
                         CityState.Loading -> {
                             // Show loading indicator
-                            hideAllItem()
                             binding.progressBar.show()
                         }
 
-                        CityState.Empty -> {
-                            // Show empty state message
-                            hideAllItem()
-                            binding.tvNoCities.show()
-                        }
 
                         is CityState.Success -> {
-                            val cities = state.data
+                            binding.progressBar.hide()
+
+                            val city = state.data
+                            binding.tvTitle.text = " ${city.firstOrNull()?.name ?: ""} historical"
                             // Update UI with the list of cities
-                            hideAllItem()
-                            binding.rvCity.show()
-                            citiesAdapter.submitList(cities)
+                             historicalCityAdapter.submitList(city)
                         }
 
                         is CityState.Error -> {
                             val errorMessage = state.message
-
-                            binding.rvCity.showMessage(errorMessage)
+                            // Show error message
+                            binding.body.showMessage(errorMessage)
                         }
                     }
                 }
@@ -93,26 +98,10 @@ class CityFragment : BaseFragment<FragmentCityBinding, CityViewModel>(), CityAct
         }
     }
 
-    private fun setupCitiesRecyclerView() {
-        binding.rvCity.layoutManager = LinearLayoutManager(context)
-        binding.rvCity.adapter = citiesAdapter
-    }
 
-
-    private fun hideAllItem(){
-        binding.rvCity.visibility = View.GONE
-        binding.progressBar.visibility = View.GONE
-        binding.tvNoCities.visibility = View.GONE
-    }
-
-    override fun onCityClick(city: CityModel) {
-        val action = CityFragmentDirections.actionCityFragmentToDetailsCityFragment(city.name)
-        navController.navigate(action)
-    }
-
-    override fun onCityWeatherHistoryClick(city: CityModel) {
-        val action = CityFragmentDirections.actionCityFragmentToHistoricalCityFragment(city.name)
-        navController.navigate(action)
+    private fun setupHistoricalCityRecyclerView() {
+        binding.rvHistoricalCity.layoutManager = LinearLayoutManager(context)
+        binding.rvHistoricalCity.adapter = historicalCityAdapter
     }
 
 }

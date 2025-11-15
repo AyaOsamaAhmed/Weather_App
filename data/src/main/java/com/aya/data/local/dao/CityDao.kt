@@ -14,4 +14,7 @@ abstract class CityDao : BaseDao<CityEntity> {
 
     @Query("SELECT EXISTS(SELECT 1 FROM cityentity WHERE name = :cityName LIMIT 1)")
     abstract suspend fun checkCity(cityName: String): Boolean
+
+    @Query("UPDATE cityentity SET cityId = :cityId, country = :country WHERE name = :name")
+    abstract suspend fun updateCity(cityId: String, name: String, country: String)
 }
