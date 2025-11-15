@@ -1,4 +1,4 @@
-package com.aya.weather_app.city
+package com.aya.weather_app.fragment.city
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.aya.weather_app.R
 import com.aya.weather_app.base.BaseFragment
 import com.aya.weather_app.databinding.FragmentCityBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class CityFragment : BaseFragment<FragmentCityBinding, CityViewModel>() {
 
     private lateinit var nav : NavHostFragment

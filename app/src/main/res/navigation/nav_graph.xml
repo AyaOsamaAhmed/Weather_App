@@ -6,7 +6,7 @@
     >
 
  <fragment
-     android:name="com.aya.weather_app.city.CityFragment"
+     android:name="com.aya.weather_app.fragment.city.CityFragment"
      android:id="@+id/cityFragment"
      android:label="City Fragment"
      >
