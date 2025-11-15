@@ -5,4 +5,9 @@
     <string name="add_city">Add city</string>
     <string name="cities_historical">City historical</string>
     <string name="no_find_historical_cities">No Find Historical Cities</string>
+    <string name="weather_info">Weather information from</string>
+    <string name="humidity">Humidity</string>
+    <string name="description">Description</string>
+    <string name="temperature">Temperature</string>
+    <string name="Windspeed">Windspeed</string>
 </resources>
