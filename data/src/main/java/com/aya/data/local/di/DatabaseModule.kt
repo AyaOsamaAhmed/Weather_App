@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.aya.data.local.dao.CityDao
 import com.aya.data.local.dao.WeatherDao
 import com.aya.data.local.db.WeatherDatabase
+import com.aya.data.local.db.WeatherDatabase.Companion.MIGRATION_1_2
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +26,10 @@ object DatabaseModule {
             context,
             WeatherDatabase::class.java,
             WeatherDatabase.DATABASE_NAME
-        ).build()
+        )
+          //  .addMigrations(MIGRATION_1_2)
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides

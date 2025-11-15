@@ -1,5 +1,6 @@
 package com.aya.data.mainRepo
 
+import com.aya.data.local.entity.CityEntity
 import com.aya.data.local.repo.DatabaseRepo
 import com.aya.data.remote.ApiWeather
 import com.aya.domain.entity.CityModel
@@ -25,6 +26,15 @@ class WeatherRepoImpl  (
                 }
 
         }
+
+    override suspend fun insertCityToDB(city: CityModel) {
+        db.insertCity(CityEntity( name = city.name ))
+
+    }
+
+    override suspend fun checkCityToDB(city: String) :Boolean {
+        return db.checkCity(city)
+    }
 
 
 }

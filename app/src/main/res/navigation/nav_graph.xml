@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/cityFragment"
-    >
+    app:startDestination="@id/cityFragment">
 
  <fragment
      android:name="com.aya.weather_app.fragment.city.CityFragment"
      android:id="@+id/cityFragment"
-     android:label="City Fragment"
+     tools:layout="@layout/fragment_city"
      >
+  <action
+      android:id="@+id/action_cityFragment_to_addCityBottomSheet"
+      app:destination="@id/addCityBottomSheet" />
 
  </fragment>
 
+ <fragment
+     android:name="com.aya.weather_app.fragment.city.bottomSheet.AddCityBottomSheet"
+     android:id="@+id/addCityBottomSheet"
+     tools:layout="@layout/bottom_sheet_add_city"
+     >
+     <action
+         android:id="@+id/action_addCityBottomSheet_to_cityFragment"
+         app:destination="@id/cityFragment" />
+ </fragment>
 
 </navigation>

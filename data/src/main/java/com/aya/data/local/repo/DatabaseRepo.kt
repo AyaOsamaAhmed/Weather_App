@@ -14,7 +14,7 @@ class DatabaseRepo @Inject constructor(
     // City operations
     suspend fun insertCity(cityEntity: CityEntity) = cityDao.insert(cityEntity)
     suspend fun getAllCities(): Flow<List<CityEntity>> = cityDao.getAllCities()
-
+    suspend fun checkCity(cityName: String): Boolean = cityDao.checkCity(cityName)
 
     // Weather operations
     suspend fun insertWeather(weather: Weather) = weatherDao.insert(weather)

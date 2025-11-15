@@ -11,4 +11,7 @@ import kotlinx.coroutines.flow.Flow
 abstract class CityDao : BaseDao<CityEntity> {
     @Query("SELECT * FROM cityentity")
     abstract fun getAllCities(): Flow<List<CityEntity>>
+
+    @Query("SELECT EXISTS(SELECT 1 FROM cityentity WHERE name = :cityName LIMIT 1)")
+    abstract suspend fun checkCity(cityName: String): Boolean
 }

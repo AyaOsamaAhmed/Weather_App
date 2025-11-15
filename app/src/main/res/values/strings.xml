@@ -10,4 +10,7 @@
     <string name="description">Description</string>
     <string name="temperature">Temperature</string>
     <string name="Windspeed">Windspeed</string>
+    <string name="add_new_city">Add new City</string>
+    <string name="search_for_cities">Search For Cities</string>
+    <string name="existing_city">Existing City</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aya.domain.entity.CityModel
 import com.aya.domain.useCase.city.GetAllCitiesUseCase
+import com.aya.domain.useCase.city.InsertCityUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -31,6 +32,7 @@ class CityViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
 
+
     init {
         loadCities()
     }
@@ -51,6 +53,11 @@ class CityViewModel @Inject constructor(
             }
         } catch (e: Exception) {
             _state.value = CityState.Error(e.message ?: "Unknown Error")
+            Log.d("CityViewModel", "error: ${e.message}" )
+
         }
     }
+
+
+
 }
