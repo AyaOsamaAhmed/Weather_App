@@ -3,12 +3,12 @@ package com.aya.data.local.dao
 import androidx.room.Dao
 import androidx.room.Query
 import com.aya.data.base.BaseDao
-import com.aya.data.local.entity.City
+import com.aya.data.local.entity.CityEntity
 import kotlinx.coroutines.flow.Flow
 
 
 @Dao
-abstract class CityDao : BaseDao<City> {
-    @Query("SELECT * FROM city")
-    abstract fun getAllCities(): Flow<List<City>>
+abstract class CityDao : BaseDao<CityEntity> {
+    @Query("SELECT * FROM cityentity")
+    abstract fun getAllCities(): Flow<List<CityEntity>>
 }

@@ -66,7 +66,8 @@ dependencies {
     // Room Database
     implementation(libs.androidx.room)
     implementation(libs.androidx.room.ktx)
-
+// Room compiler (kapt)
+    kapt (libs.androidx.room.compiler)
 
 
     testImplementation(libs.junit)
