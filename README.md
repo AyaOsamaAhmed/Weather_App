@@ -7,9 +7,9 @@ for the added cities
 
 ## How to run?
 
-This project needs Android Studio 4.0.0 or above with Android Gradle plugin 7.0+
+This project needs Android Studio 5.0.0 or above with Android Gradle plugin 8.0+
 
-It's recommended to open it using <B>Android Studio Artic Fox</B>.
+It's recommended to open it using <B>Android Studio Ladybug Feature </B>.
 
 To add a new city to the cities list press on add city button and write the city name then press the "enter" key on the softkeyboard.
 
